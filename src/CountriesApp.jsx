@@ -4,7 +4,7 @@ import { CountriesRoutes } from './route/CountriesRoutes'
 export const CountriesApp = () => {
   return (
     <BrowserRouter>
-    <CountriesRoutes/>
+      <CountriesRoutes />
     </BrowserRouter>
 
   )
