@@ -1,0 +1,5 @@
+export * from './CapitalPage'
+export * from './HomePage'
+export * from './RegionPage'
+export * from './CountriesPage'
+export * from './CountriePage'
