@@ -13,7 +13,7 @@ export const CountriesPage = () => {
     setCountries(data)
   }
 
-  console.log(countries)
+
 
   return (
     <section className='mt-20'>

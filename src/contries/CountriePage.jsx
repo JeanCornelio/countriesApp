@@ -15,7 +15,7 @@ export const CountriePage = () => {
     setCountrie(countrie[0])
   }
 
-  console.log(countrie)
+  
 
   return (
     <section className='mt-20'>

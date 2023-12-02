@@ -1,24 +1,26 @@
 import { useState } from 'react'
 
-export const Form = () => {
-  const [inputValue, setInputValue] = useState('')
-
+export const Form = (inputValue) => {
+  const [input, setInputValue] = useState(inputValue)
+  
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (inputValue.length <= 0) {
+    if (input.length <= 0) {
       return null
     }
+    
     // setInputValue('')
   }
 
   const handleSetValue = ({ target }) => {
     const value = target.value
+  
     setInputValue(value)
   }
 
   return {
     handleSetValue,
-    inputValue,
+    input,
     handleSubmit
   }
 }
