@@ -3,7 +3,7 @@ import { Form } from "../hook/Form";
 import { useDispatch, useSelector } from "react-redux";
 import { setInputValue } from "../store/countries/CountriesSlice";
 
-export const InputSearch = () => {
+export const InputSearch = ({placeholder}) => {
   
   const {inputValue} = useSelector(state => state.countries)
   const { handleSetValue, input, handleSubmit } = Form(inputValue);
@@ -11,14 +11,14 @@ export const InputSearch = () => {
 
   useEffect(() => {
     dispatch(setInputValue(input))
-  }, [ input]);
+  }, [ input, dispatch]);
 
   return (
     <form className="w-full px-5" onSubmit={handleSubmit}>
       <input
         type="text"
         className="transition ease-in-out delay-50  w-full bg-cyan-800 border border-cyan-700 py-2 text-white rounded-lg text-sm block p-2.5"
-        placeholder="Search..."
+        placeholder={placeholder}
         value={inputValue}
         onChange={handleSetValue}
       />

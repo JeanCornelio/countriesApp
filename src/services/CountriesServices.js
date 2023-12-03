@@ -1,5 +1,6 @@
 //API
 const API_URL = 'https://restcountries.com/v3.1';
+const API_URL_v2 = 'https://restcountries.com/v2';
 
 
 //Get All Countries
@@ -17,7 +18,7 @@ export const getCountrieCode = async (code)  =>{
 }
 
 //Get Countries for Search 
-export const getForSearch = async (name)  =>{
+export const getCountriesForSearch = async (name)  =>{
     const response = await fetch(`${API_URL}/name/${name}?fields=name,altSpellings`);
     const countrie = await response.json();
     if(countrie.length > 0){
@@ -26,4 +27,20 @@ export const getForSearch = async (name)  =>{
     return  []
 }
 
+//Get Capital for Search 
+export const getCapitalsForSearch = async (name)  =>{
+    const response = await fetch(`${API_URL}/capital/${name}?fields=name,altSpellings,capital`);
+    const capital = await response.json();
+    if(capital.length > 0){
+        return capital
+    }
+    return  []
+}
 
+//Get Countries for Region
+export const getForRegion = async (sigla)  =>{
+    const response = await fetch(`${API_URL_v2}/regionalbloc/${sigla}?capital,alpha3Code,flags,population,region,cca`);
+    const regions = await response.json();
+   
+    return  regions
+}
