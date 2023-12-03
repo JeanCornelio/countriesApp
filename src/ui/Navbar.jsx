@@ -37,8 +37,8 @@ export const Navbar = () => {
             <NavLink
               className={({ isActive }) =>
                 isActive
-                  ? 'text-cyan-900 p-4 cursor-pointer bg-gray-100 rounded-md block'
-                  : ' text-gray-500 p-4 cursor-pointer w-full block hover:text-cyan-900 hover:bg-gray-100 hover:rounded-md'}
+                  ? 'text-cyan-900 p-4 cursor-pointer bg-gray-300 rounded-md block'
+                  : ' text-gray-500 p-4 cursor-pointer w-full block hover:text-cyan-900 hover:bg-gray-300 hover:rounded-md'}
               to={route.path}
             >
               <i className={route.icon + ' pr-3 text-sm'} />

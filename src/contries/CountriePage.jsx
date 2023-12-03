@@ -15,7 +15,7 @@ export const CountriePage = () => {
     setCountrie(countrie[0])
   }
 
-  console.log(countrie)
+  //TODO: Agregar una seccion para la localizacion con google maps
 
   return (
     <section className='mt-20'>
