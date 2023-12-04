@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 
 export const CardCountrie = (countrie) => {
+  console.log(countrie)
+
   return (
     <article key={countrie.name.common} className='bg-cyan-950 text-white p-5 rounded-xl flex items-center gap-10 '>
       <header>
