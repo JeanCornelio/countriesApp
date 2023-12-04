@@ -2,19 +2,19 @@ import { useState } from 'react'
 
 export const Form = (inputValue) => {
   const [input, setInputValue] = useState(inputValue)
-  
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if (input.length <= 0) {
       return null
     }
-    
+
     // setInputValue('')
   }
 
   const handleSetValue = ({ target }) => {
     const value = target.value
-  
+
     setInputValue(value)
   }
 
