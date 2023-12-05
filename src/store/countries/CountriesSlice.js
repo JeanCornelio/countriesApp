@@ -6,7 +6,7 @@ export const CountriesSlice = createSlice({
     inputValue: '',
     countriesObtained: [],
     regions: [],
-    capitalsHistory: [],
+    countriesHistory: null,
     showSearch: false
   },
   reducers: {
@@ -30,13 +30,13 @@ export const CountriesSlice = createSlice({
       // console.log(payload);
       state.showSearch = payload
     },
-    setHistoryCapitals: (state, { payload }) => {
+    setHistoryCountries: (state, { payload }) => {
       // console.log(payload);
-      state.capitalsHistory = payload
+      state.countriesHistory = payload
     }
 
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { setCountriesObtained, setInputValue, setRegions, cleanRegions, setValueShowSearch, setHistoryCapitals } = CountriesSlice.actions
+export const { setCountriesObtained, setInputValue, setRegions, cleanRegions, setValueShowSearch, setHistoryCountries } = CountriesSlice.actions

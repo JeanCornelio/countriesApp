@@ -1,23 +1,17 @@
-
 export const HomePage = () => {
   return (
     <section className='mt-20 p-5'>
-      <h1>Bienvenido a la Página de Búsqueda de Países y Capitales</h1>
+      <article className='flex justify-between items-center'>
+        <div className='text-white text-4xl font-bold'>
+          <h1>PAISES | CAPITALES</h1>
+
+        </div>
+        <h1>Bienvenido a la Página de Búsqueda de Países y Capitales</h1>
+      </article>
 
       <p>
         En esta página, puedes buscar información sobre países y sus capitales.
       </p>
-
-    {/*   <div>
-        <label htmlFor="searchInput">Buscar País o Capital:</label>
-        <input
-          type="text"
-          id="searchInput"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button onClick={handleSearch}>Buscar</button>
-      </div> */}
 
       <p>
         También puedes explorar la información de algunos países y capitales destacados.
@@ -43,5 +37,5 @@ export const HomePage = () => {
         </ul>
       </div>
     </section>
-  );
+  )
 }

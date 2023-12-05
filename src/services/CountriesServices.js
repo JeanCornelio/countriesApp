@@ -28,7 +28,7 @@ export const getCountriesForSearch = async (name) => {
 
 // Get Capital for Search
 export const getCapitalsForSearch = async (name) => {
-  const response = await fetch(`${API_URL}/capital/${name}?fields=name,altSpellings,capital`)
+  const response = await fetch(`${API_URL}/capital/${name}?fields=name,altSpellings,capital,flags,population`)
   const capital = await response.json()
   if (capital.length > 0) {
     return capital
