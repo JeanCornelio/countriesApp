@@ -1,72 +1,29 @@
-import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { InputSearch } from '../components/InputSearch'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCapitalSearch, getCountriesSearch } from '../store/countries/thunks'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { setValueShowSearch } from '../store/countries/CountriesSlice'
 
-import { setInputValue, setValueShowSearch } from '../store/countries/CountriesSlice'
+import { InputSearch } from '../components'
+import { useHeader } from '../hook'
+
+const initialHistory = () => {
+  const dataLocaleStorage = JSON.parse(localStorage.getItem('COUNTRIE_HISTORY'))
+  const result = dataLocaleStorage !== null ? JSON.parse(localStorage.getItem('COUNTRIE_HISTORY')) : []
+  return result
+}
 
 export const HeaderPage = () => {
-  const [location, setLocation] = useState('')
-  const [showBtnSearch, setShowBtnSearch] = useState(false)
-  const { countriesObtained, inputValue, showSearch } = useSelector((state) => state.countries)
-  const [countriesHistory, setCountriesHistory] = useState([])
-  const loc = useLocation()
   const dispatch = useDispatch()
-  const configNamePage = setNamePage()
 
-  function setNamePage () {
-    const namePath = loc.pathname.split('/')[1]
-    const name = namePath.toUpperCase()
+  const localstorageHistory = initialHistory()
 
-    return {
-      searchCapitals: name === 'CAPITAL',
-      name
-    }
-  }
+  const {
+    location, countriesObtained,
+    showBtnSearch,
+    showSearch,
+    handleCountriesHistory,
+    configNamePage
 
-  const handleShowSearchBtn = () => {
-    if (configNamePage.name === 'CAPITAL' || configNamePage.name === 'COUNTRIES') {
-      setShowBtnSearch(true)
-    } else {
-      setShowBtnSearch(false)
-    }
-  }
-
-  const handleCountriesHistory = (countrie) => {
-    console.log(countrie)
-    const arrFilter = countriesHistory.filter(c => c.capital[0] !== countrie.capital[0])
-
-    console.log(arrFilter)
-    setCountriesHistory([countrie, ...arrFilter])
-    // TODO: Continuar con el guardar de los paises al cual se buscaron las countries
-
-    // Reset search
-    resetStatesSearch()
-  }
-
-  useEffect(() => {
-    console.log(countriesHistory)
-    setLocation(configNamePage.name)
-
-    // Reset search
-    resetStatesSearch()
-  }, [loc])
-
-  useEffect(() => {
-    const delayInputTimeoutId = setTimeout(() => {
-      configNamePage.searchCapitals ? dispatch(getCapitalSearch(inputValue)) : dispatch(getCountriesSearch(inputValue))
-    }, 500)
-    return () => clearTimeout(delayInputTimeoutId)
-  }, [inputValue, dispatch])
-
-  const resetStatesSearch = () => {
-    dispatch(setValueShowSearch(false))
-    dispatch(getCountriesSearch(null))
-    dispatch(setInputValue(''))
-    // show btn Search
-    handleShowSearchBtn()
-  }
+  } = useHeader(localstorageHistory)
 
   return (
     <header className='relative'>
@@ -83,9 +40,9 @@ export const HeaderPage = () => {
           </button>}
       </div>
       <div
-        className={`bg-cyan-950  rounded-bl-3xl w-full shadow-xl  justify-between items-center absolute 
-         ${showSearch ? ' z-10 py-4 pt-10  mt-16' : 'hidden rounded-bl-3xl h-20'}
-         `}
+        className={`bg-cyan-950  rounded-bl-3xl w-full shadow-xl  justify-between items-center absolute
+       ${showSearch ? ' z-10 py-4 pt-10  mt-16' : 'hidden rounded-bl-3xl h-20'}
+       `}
       >
         <InputSearch placeholder={configNamePage.searchCapitals ? 'Search capitals...' : 'Serach contries...'} />
         {countriesObtained.length > 0 && (
@@ -104,5 +61,6 @@ export const HeaderPage = () => {
         )}
       </div>
     </header>
+
   )
 }

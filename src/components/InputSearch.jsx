@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
-import { Form } from '../hook/Form'
+import { useForm } from '../hook/useForm'
 import { useDispatch, useSelector } from 'react-redux'
 import { setInputValue } from '../store/countries/CountriesSlice'
 
 export const InputSearch = ({ placeholder }) => {
   const { inputValue } = useSelector(state => state.countries)
-  const { handleSetValue, input, handleSubmit } = Form(inputValue)
+  const { handleSetValue, input, handleSubmit } = useForm(inputValue)
   const dispatch = useDispatch()
 
   useEffect(() => {

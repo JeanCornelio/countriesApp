@@ -39,7 +39,7 @@ export const RegionPage = () => {
           {
           regionList.map(region => (
             <button
-              onClick={() => handleSiglaRegion(region.sigla)} key={region.name}
+              onClick={() => handleSiglaRegion(region.sigla)} key={region.sigla}
 
               className={`me-2 mb-2 p-2 rounded-md transition ease-in-out delay-50 border 
             ${siglaCode === region.sigla ? 'border-cyan-500 text-cyan-500' : 'text-white bg-cyan-900 hover:border-cyan-500 hover:text-cyan-500'}`}
@@ -52,8 +52,8 @@ export const RegionPage = () => {
         <article className='p-5 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 '>
 
           {
-                regions.length > 0 && regions.map(region => (
-                  <CardCountrie {...region} key={region.name} />
+                regions.length > 0 && regions.map((region, index) => (
+                  <CardCountrie {...region} key={index} />
                 ))
               }
         </article>
