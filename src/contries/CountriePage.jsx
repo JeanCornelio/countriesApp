@@ -4,14 +4,14 @@ import { getCountrieCode } from '../services'
 
 export const CountriePage = () => {
   const [countrie, setCountrie] = useState(null)
-  const { contrieCode } = useParams()
+  const { countrieCode } = useParams()
 
   useEffect(() => {
     getCountrie()
-  }, [contrieCode])
+  }, [countrieCode])
 
   const getCountrie = async () => {
-    const countrie = await getCountrieCode(contrieCode)
+    const countrie = await getCountrieCode(countrieCode)
     setCountrie(countrie[0])
   }
 

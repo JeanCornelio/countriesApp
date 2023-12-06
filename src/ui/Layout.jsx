@@ -1,8 +1,9 @@
+import { Outlet } from "react-router-dom"
 import { HeaderPage } from "../ui"
 import { Main } from "./Main"
 import { Navbar } from "./navbar"
 
-export const Layout = ({children}) => {
+export const Layout = () => {
   return (
     <div className="flex h-screen ">
           <Navbar/>  
@@ -10,7 +11,7 @@ export const Layout = ({children}) => {
         <div className="relative w-full">
           <HeaderPage/>
           <Main>
-            {children}
+            <Outlet/>
         </Main>
         </div>
         

@@ -1,41 +1,28 @@
+import { Link } from "react-router-dom"
+
 export const HomePage = () => {
   return (
-    <section className='mt-20 p-5'>
-      <article className='flex justify-between items-center'>
-        <div className='text-white text-4xl font-bold'>
-          <h1>PAISES | CAPITALES</h1>
+    <section className='  bg-cyan-950 '>
+      <article className='flex justify-between  h-screen'>
+      
+        <div className='text-white text-4xl md:text-5xl xl:text-7xl  font-bold   p-10 flex items-center justify-center flex-1 md:flex '>
+       
+          <div>
+            <p><span className="text-cyan-300">Explore </span>the World:</p>
+            <p >Find and <span className="text-cyan-300">Discover</span></p>
+            <p>Countri<span className="text-cyan-300">es</span></p>
+            <Link to="/countries" className="  inline-flex w-auto gap-3 items-center text-2xl font-normal mt-8  text-white bg-cyan-950 p-2 rounded-md transition ease-in-out delay-50 border hover:border-cyan-500 hover:text-cyan-500 ">
+            <i className='bi bi-globe-europe-africa text-white-900 text-3xl ' />
+              Get Started
+            </Link>
+          </div>
+        
 
         </div>
-        <h1>Bienvenido a la Página de Búsqueda de Países y Capitales</h1>
+        <div className="hidden md:block md:flex-1" style={{backgroundImage: 'url(/public/gif/gif1280.gif)', }}>  </div>
       </article>
-
-      <p>
-        En esta página, puedes buscar información sobre países y sus capitales.
-      </p>
-
-      <p>
-        También puedes explorar la información de algunos países y capitales destacados.
-      </p>
-
-      <div>
-        <h2>Países Destacados:</h2>
-        <ul>
-          <li>Estados Unidos</li>
-          <li>Canadá</li>
-          <li>Reino Unido</li>
-          {/* Añade más países según sea necesario */}
-        </ul>
-      </div>
-
-      <div>
-        <h2>Capitales Destacadas:</h2>
-        <ul>
-          <li>Washington, D.C.</li>
-          <li>Ottawa</li>
-          <li>Londres</li>
-          {/* Añade más capitales según sea necesario */}
-        </ul>
-      </div>
+    
+     
     </section>
   )
 }

@@ -12,23 +12,24 @@ const routes = [
     icon: 'bi bi-globe-europe-africa'
   },
   {
+    path: '/capital',
+    name: 'Capital',
+    icon: 'bi bi-map-fill'
+  },
+  {
     path: '/region',
     name: 'Region',
     icon: 'bi bi-map-fill'
   },
-  {
-    path: '/capital',
-    name: 'Capital',
-    icon: 'bi bi-map-fill'
-  }
+  
 ]
 
 export const Navbar = () => {
   return (
     <nav className=' w-72 hidden lg:block flex-none p-5 '>
       <header className='text-center flex gap-3 items-center mb-4'>
-        <i className='bi bi-globe-europe-africa text-cyan-900 text-3xl' />
-        <h3 className='text-cyan-800 font-bold'>CONTRIES</h3>
+        <i className='bi bi-globe-europe-africa text-cyan-900 text-4xl' />
+        <h3 className='text-cyan-800 font-bold  text-3xl'>CONTRIES</h3>
       </header>
       <hr />
       <ul className=''>
