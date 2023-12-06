@@ -13,7 +13,7 @@ export const HomePage = () => {
             <p>Countri<span className="text-cyan-300">es</span></p>
             <Link to="/countries" className="  inline-flex w-auto gap-3 items-center text-2xl font-normal mt-8  text-white bg-cyan-950 p-2 rounded-md transition ease-in-out delay-50 border hover:border-cyan-500 hover:text-cyan-500 ">
             <i className='bi bi-globe-europe-africa text-white-900 text-3xl ' />
-              Get Started
+              Get started
             </Link>
           </div>
         
