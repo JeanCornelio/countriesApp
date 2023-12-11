@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom'
 
 const routes = [
-  {
-    path: '/home',
+/*   {
+    path: '/',
     name: 'Home',
     icon: 'bi bi-house-fill'
-  },
+  }, */
   {
     path: '/countries',
     name: 'Countries',
@@ -20,8 +20,8 @@ const routes = [
     path: '/region',
     name: 'Region',
     icon: 'bi bi-map-fill'
-  },
-  
+  }
+
 ]
 
 export const Navbar = () => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getCountrieCode } from '../services'
 
 export const CountriePage = () => {
@@ -14,8 +14,6 @@ export const CountriePage = () => {
     const countrie = await getCountrieCode(countrieCode)
     setCountrie(countrie[0])
   }
-
-  //TODO: Agregar una seccion para la localizacion con google maps
 
   return (
     <section className='mt-20'>
@@ -43,6 +41,7 @@ export const CountriePage = () => {
               <li className='text-xl'>Independent: <span className='text-white'> {countrie.independent === true ? 'Yes' : 'No'}</span></li>
               <li className='text-xl'>Population: <span className='text-white'>{parseInt(countrie.population).toLocaleString()}</span></li>
               <li className='text-xl'>Numerical code: <span className='text-white'> {countrie.ccn3}</span></li>
+              <li className='text-xl'>Maps: <Link to={countrie.maps.googleMaps} target='_blank' className='text-orange-500'> View..</Link></li>
             </ul>
           </article>
           <article className='text-cyan-500 bg-cyan-950 rounded-xl p-5'>
