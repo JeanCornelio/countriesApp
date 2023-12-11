@@ -36,7 +36,7 @@ export const CountriesSlice = createSlice({
       state.countriesHistory = payload
     },
     setshowMobileMenu: (state, { payload }) => {
-      console.log(payload)
+      // console.log(payload)
       state.showMobileMenu = payload
     }
 
