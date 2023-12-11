@@ -13,7 +13,6 @@ const initialHistory = () => {
 
 export const HeaderPage = () => {
   const dispatch = useDispatch()
-
   const localstorageHistory = initialHistory()
 
   const {
@@ -21,32 +20,43 @@ export const HeaderPage = () => {
     showBtnSearch,
     showSearch,
     handleCountriesHistory,
-    configNamePage
+    configNamePage,
+    showMenu
 
   } = useHeader(localstorageHistory)
 
   return (
     <header className='relative'>
-      <div className=' bg-cyan-950 sm:rounded-none lg:rounded-tl-3xl lg:rounded-bl-3xl absolute w-full  shadow-xl flex items-center z-20 justify-between'>
+      <div className=' bg-cyan-950 sm:rounded-none lg:rounded-tl-3xl lg:rounded-bl-3xl absolute w-full  shadow-xl flex items-center z-0 justify-between'>
         <h4 className='text-4xl text-white p-5'>{location}</h4>
 
-        {showBtnSearch &&
-
+        <div className='flex items-center'>
           <button
-            onClick={() => dispatch(setValueShowSearch(!showSearch))}
-            className='mx-5 text-white bg-cyan-900 p-2 rounded-md transition ease-in-out delay-50 border hover:border-cyan-500 hover:text-cyan-500 '
+            className='me-5 block lg:hidden text-white bg-cyan-900 p-2 rounded-md transition ease-in-out delay-50 border hover:border-cyan-500 hover:text-cyan-500 '
+            onClick={showMenu}
           >
-            <i className='bi bi-search' />
-          </button>}
+            <i className='bi bi-list' />
+          </button>
+          {showBtnSearch &&
+
+            <button
+              onClick={() => dispatch(setValueShowSearch(!showSearch))}
+              className='me-5 text-white bg-cyan-900 p-2 rounded-md transition ease-in-out delay-50 border hover:border-cyan-500 hover:text-cyan-500 '
+            >
+              <i className='bi bi-search' />
+            </button>}
+
+        </div>
+
       </div>
       <div
         className={`bg-cyan-950  rounded-bl-3xl w-full shadow-xl  justify-between items-center absolute
-       ${showSearch ? ' z-10 py-4 pt-10  mt-16' : 'hidden rounded-bl-3xl h-20'}
+       ${showSearch ? ' z-0 py-4 pt-10  mt-16' : 'hidden rounded-bl-3xl h-20'}
        `}
       >
         <InputSearch placeholder={configNamePage.searchCapitals ? 'Search capitals...' : 'Serach contries...'} />
         {countriesObtained.length > 0 && (
-          <div className='mx-5  bg-cyan-800 border border-cyan-700 cursor-pointer rounded-lg divide-y divide-cyan-700'>
+          <div className=' z-0 mx-5  bg-cyan-800 border border-cyan-700 cursor-pointer rounded-lg divide-y divide-cyan-700'>
             {countriesObtained.map((countrie) => (
               <Link
                 to={`/countrie/${countrie.altSpellings[0]}`}

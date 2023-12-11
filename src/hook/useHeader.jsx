@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import { setHistoryCountries, setInputValue, setValueShowSearch } from '../store/countries/CountriesSlice'
+import { setHistoryCountries, setInputValue, setValueShowSearch, setshowMobileMenu } from '../store/countries/CountriesSlice'
 import { getCapitalSearch, getCountriesSearch } from '../store/countries/thunks'
 
 export const useHeader = (initialHistory) => {
@@ -12,6 +12,7 @@ export const useHeader = (initialHistory) => {
   const loc = useLocation()
   const dispatch = useDispatch()
   const configNamePage = setNamePage()
+  const mobileMquery = window.matchMedia('(max-width: 1024px)')
 
   function setNamePage () {
     const namePath = loc.pathname.split('/')[1]
@@ -63,6 +64,26 @@ export const useHeader = (initialHistory) => {
     dispatch(setValueShowSearch(!showSearch))
   }
 
+  const showMenu = () => {
+    dispatch(setshowMobileMenu(true))
+  }
+
+  const closeMenuQueryMatche = (x) => {
+    if (mobileMquery.matches) {
+      dispatch(setshowMobileMenu(false))
+    }
+  }
+
+  useEffect(() => {
+    mobileMquery.addEventListener('change', function () {
+      closeMenuQueryMatche(mobileMquery)
+    })
+
+    return () => {
+      mobileMquery.removeEventListener('change', closeMenuQueryMatche)
+    }
+  }, [])
+
   const resetStatesSearch = () => {
     dispatch(setValueShowSearch(false))
     dispatch(getCountriesSearch(null))
@@ -78,6 +99,7 @@ export const useHeader = (initialHistory) => {
     handleCountriesHistory,
     configNamePage,
     handleSetValueShowSearch,
+    showMenu,
     history
   }
 }

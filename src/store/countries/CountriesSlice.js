@@ -7,7 +7,8 @@ export const CountriesSlice = createSlice({
     countriesObtained: [],
     regions: [],
     countriesHistory: null,
-    showSearch: false
+    showSearch: false,
+    showMobileMenu: false
   },
   reducers: {
     setCountriesObtained: (state, { payload }) => {
@@ -33,10 +34,14 @@ export const CountriesSlice = createSlice({
     setHistoryCountries: (state, { payload }) => {
       // console.log(payload);
       state.countriesHistory = payload
+    },
+    setshowMobileMenu: (state, { payload }) => {
+      console.log(payload)
+      state.showMobileMenu = payload
     }
 
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { setCountriesObtained, setInputValue, setRegions, cleanRegions, setValueShowSearch, setHistoryCountries } = CountriesSlice.actions
+export const { setCountriesObtained, setInputValue, setRegions, cleanRegions, setValueShowSearch, setHistoryCountries, setshowMobileMenu } = CountriesSlice.actions
